@@ -66,19 +66,19 @@ void Heapsort_2d (vector<vector<int>>& v) {
 // Implemented using merge sort
 class Merge_2d {
     vector<vector<int>>& mvec;
-    int roww;
+    int row;
     int col;
 public:
     Merge_2d(vector<vector<int>>& A) : mvec(A)
     {
-        roww = (int) mvec.size();
+        row = (int) mvec.size();
         col = (int) mvec[0].size();
     }
 
     void mergesort_2d(int l, int r);
     void merge_2d(int p, int q, int r);
 
-    int& Val(int i) {return mvec[i / roww][i % col];}
+    int& Val(int i) {return mvec[i / row][i % col];}
 
 };
 
