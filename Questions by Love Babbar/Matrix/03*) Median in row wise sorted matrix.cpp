@@ -5,7 +5,8 @@
 #include <vector>
 using namespace std;
 
-
+// binary search on number line between min and max
+// Time complexity O(32 * r * log(c))
 class Solution{
 public:
     // also given r and c are always odd
