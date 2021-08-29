@@ -31,7 +31,7 @@ class Minheap {
     int Right(int i)    { return 2*i + 2;}
 
     // Used in insert key
-    int Parent(int i)   { return i - 1/2;}
+    int Parent(int i)   { return (i - 1)/2;}
 
     int Val(int i) { return harr[i].element;}
 
