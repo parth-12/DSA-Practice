@@ -37,7 +37,7 @@ public:
 
             // Pushing in stack when value of current height is less than top of stack
             while (!h_st.empty() and h < h_st.top()) {
-                start = p_st.top();                             // changing start since it can be extended baxkwards
+                start = p_st.top();                             // changing start since it can be extended backwards
                 maxArea = max(maxArea, h_st.top() * (i - start));
 
                 p_st.pop(); h_st.pop();

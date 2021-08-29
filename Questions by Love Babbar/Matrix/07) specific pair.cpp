@@ -23,7 +23,7 @@ int specific_pair(vector<vector<int>>& Mat) {
         for (int j = 1; j < n; j++) {
             ans = max(ans, Mat[i][j] - Mat[i - 1][j - 1]);
 
-            Mat[i][j] = min({Mat[i - 1][j - 1], Mat[i][j - 1], Mat[i - 1][j]});
+            Mat[i][j] = min({Mat[i][j], Mat[i][j - 1], Mat[i - 1][j]});
         }
 
     return ans;
@@ -34,7 +34,7 @@ int specific_pair(vector<vector<int>>& Mat) {
 
 int main() {
     vector<vector<int>> vec = { { 1, 2, -1, -4, -20 },
-                                { -8, -3, 4, 2, 1 },
+                                { -3, -8, 4, 2, 1 },
                                 { 3, 8, 6, 1, 3 },
                                 { -4, -1, 1, 7, -6 },
                                 { 0, -4, 10, -5, 1 }};
