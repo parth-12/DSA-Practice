@@ -1,0 +1,41 @@
+Hash maps and hash sets are widely used data structures that provide efficient storage and retrieval of data. Their average-case time complexity for most operations, such as insertion, deletion, and lookup, is often O(1). However, this efficiency depends on several factors, and there are edge cases where performance can degrade.
+
+Average-Case Complexity: O(1)
+Hashing Process: The operation relies on a hash function, which maps keys to specific "buckets" in memory.
+
+A well-designed hash function ensures uniform distribution of keys across buckets. The hash computation itself is expected to be a constant-time operation in most cases.
+Once the hash is computed, the bucket corresponding to the hash is accessed directly, making the lookup process efficient.
+Worst-Case Complexity: O(n)
+Hash Collisions: When multiple keys map to the same bucket due to the hash function returning the same hash code, a collision occurs.
+
+In such cases, the hash map stores all colliding entries in a bucket, typically as a linked list.
+To resolve collisions, the hash map iterates through the bucket, checking each entry with an equality comparison, leading to O(n) time complexity if all keys hash to the same bucket.
+This worst-case scenario is extremely rare with a good hash function, but it is still a theoretical limitation to consider when designing or selecting algorithms.
+Improvements in Modern Implementations (e.g., Java HashMap in JDK 8)
+Tree-Backed Buckets: In modern hash map implementations, buckets that become densely populated are converted into balanced binary trees.
+
+This reduces the lookup time complexity in such cases from O(n) to O(logn). The tree structure leverages key ordering for efficient traversal.
+If the key type's equality (equals) and ordering (compareTo) logic are inconsistent, this optimization sometimes leads to unpredictable behavior.
+Takeaway:
+In most real-world scenarios, hash maps and sets offer excellent performance and are the default choice for many applications requiring fast lookups.
+
+However, be cautious of:
+
+Poor hash functions.
+Memory limitations.
+Keys with inconsistent equality and ordering logic in modern implementations.
+In general, when analyzing time complexity and space complexity in editorials, videos or discussions on the internet, most assume that hash functions are well-designed. This assumption allows us to consider the complexity of hash table operations as O(1), rather than O(n) or O(logn). This consistent behavior is reflected in almost all articles or videos you may encounter, where lookups are always described as constant time, never as O(n) due to the underlying principles of hash functions.
+
+To deepen your understanding of hash maps, sets, and their underlying principles, the following resources are highly recommended:
+
+Hash Table Explore Card : This card has some great explanations on how it is applied to different DSA problems and how to recognize this pattern.
+https://leetcode.com/explore/learn/card/hash-table/
+
+Universal Hashing: This explains the principles behind creating hash functions that achieve the ideal O(1) performance.
+https://en.wikipedia.org/wiki/Universal_hashing
+
+Hash Table: This covers collision handling techniques (like chaining and open addressing) and practical trade-offs in hash table design.
+https://en.wikipedia.org/wiki/Hash_table
+
+
+~source [https://leetcode.com/problems/check-if-n-and-its-double-exist/editorial]
