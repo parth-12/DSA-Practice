@@ -1,52 +1,21 @@
-int minSwaps(int arr[], int n)
-{
+int minSwaps(vector<int>&nums) {
+    int ans = 0, n = nums.size();
 
-    pair<int, int> arrPos[n];
-    for (int i = 0; i < n; i++)
-    {
-        arrPos[i].first = arr[i];
-        arrPos[i].second = i;
+    pair<int, int> arr[n];
+    for(int i = 0; i < n; ++i){
+        arr[i] = {nums[i], i};
     }
+    sort(arr, arr+n);
 
-
-    sort(arrPos, arrPos + n);
-
-    // To keep track of visited elements.
-    // Initialize
-    // all elements as not visited or false.
-    vector<bool> vis(n, false);
-
-    // Initialize result
-    int ans = 0;
-
-    // Traverse array elements
-    for (int i = 0; i < n; i++)
-    {
-        // already swapped and corrected or
-        // already present at correct pos
-        if (vis[i] || arrPos[i].second == i)
-            continue;
-
-        // find out the number of  node in
-        // this cycle and add in ans
-        int cycle_size = 0;
-        int j = i;
-        while (!vis[j])
-        {
-            vis[j] = 1;
-
-            // move to next node
-            j = arrPos[j].second;
-            cycle_size++;
+    for(int i = 0; i < n; ++i){
+        // in short moving each element to its original postion and counting the no. of swaps
+        while(i != arr[i].second){                          // while until the original number present before sorting comes back to i
+            ans++;
+            swap(arr[i], arr[arr[i].second]);
         }
-
-        ans += (cycle_size - 1);
     }
-
-    // Return result
     return ans;
 }
-
 
 
 
