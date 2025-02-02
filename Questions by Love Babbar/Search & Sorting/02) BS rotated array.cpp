@@ -33,7 +33,30 @@ public:
 };
 
 
-// crazy soln
+// crazy soln... single iteration binary search
+class Solution {
+  public:
+    int search(vector<int>& arr, int key) {
+        int n = arr.size();
+        int s=0, e=n-1, m;
+        while(s <= e) {
+            m = (s+e)/2;
+            if(arr[m] == key) return m;
+            if(arr[s] <= arr[m]) {
+                if(key < arr[s] or key > arr[m]) s = m+1;
+                else e = m-1;
+            }
+            else {
+                if(key > arr[e] or key < arr[m]) e = m-1;
+                else s = m+1;
+            }
+        }
+
+        return -1;
+    }
+};
+
+//same soln opposite conditions... same logic
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
